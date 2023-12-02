@@ -1,0 +1,86 @@
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 80vh;
+  position: relative;
+  gap: 80px;
+  @media (max-width: 820px) {
+    flex-direction: column-reverse;
+  }
+  .login-box {
+    padding: 40px 30px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    gap: 30px;
+    @media (max-width: 820px) {
+      width: 450px;
+    }
+    border-radius: 10px;
+
+    label {
+      color: #444136;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .login-button {
+      width: 100% !important;
+      background-color: #303ab2;
+      color: rgb(255, 255, 255);
+    }
+  }
+  .logo {
+    width: 50px;
+    height: auto;
+  }
+}
+
+//// Ant design override
+
+.ant-form {
+  width: 100% !important;
+}
+
+.ant-form-item-row {
+  width: 100% !important;
+}
+
+.ant-input {
+  width: 100% !important;
+  height: 50px !important;
+}
+.ant-input-affix-wrapper {
+  padding: 0 11px;
+}
+
+.ant-btn {
+  height: 50px !important;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7a84ec;
+  @media (max-width: 470px) {
+    font-size: 12px;
+    height: 40px !important;
+  }
+  font-weight: 500;
+
+  &:hover {
+    background-color: #ffffff !important;
+    span {
+      color: #000000 !important;
+    }
+    border-color: transparent !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+}
+.ant-checkbox-wrapper {
+  flex-direction: row-reverse;
+}
