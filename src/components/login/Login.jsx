@@ -41,7 +41,7 @@ export default function Login() {
 
   useEffect(() => {
     if (AuthService.isAuthenticated()) {
-      navigate("/home");
+      navigate("/timeline");
     }
   }, [AuthService.isAuthenticated()]);
 
@@ -61,7 +61,7 @@ export default function Login() {
                 ...res?.data,
               };
               localStorage.setItem("todo-user", JSON.stringify(user));
-              navigate("/home");
+              navigate("/timeline");
             } else {
               error(res.data.messsage);
               setMode("register");
@@ -76,7 +76,7 @@ export default function Login() {
           });
       } else {
         let data = {
-          Usename: values.Username,
+          username: values.Username,
           email: values.email,
           password: values.password,
         };
@@ -102,30 +102,41 @@ export default function Login() {
   return (
     <div className="login-wrapper">
       {mode == "login" ? (
-        <div>
-          <span style={{ fontSize: "20px", marginLeft: "20px" }}>
-            Don't have account?{" "}
-            <Button
-              onClick={() => {
-                setMode("register");
-              }}
-            >
-              Register
-            </Button>
-          </span>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            fontSize: "20px",
+
+            gap: 10,
+          }}
+        >
+          Don't have account?{" "}
+          <Button
+            onClick={() => {
+              setMode("register");
+            }}
+          >
+            Register
+          </Button>
         </div>
       ) : (
-        <div>
-          <span style={{ fontSize: "20px", marginLeft: "20px" }}>
-            have account?{" "}
-            <Button
-              onClick={() => {
-                setMode("login");
-              }}
-            >
-              login
-            </Button>
-          </span>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            fontSize: "20px",
+            gap: 10,
+          }}
+        >
+          have account?{" "}
+          <Button
+            onClick={() => {
+              setMode("login");
+            }}
+          >
+            login
+          </Button>
         </div>
       )}
       <div className="login-box">
