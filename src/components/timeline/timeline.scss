@@ -6,9 +6,43 @@
     rgb(86, 142, 226)
   );
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   overflow-y: auto;
+
+  .add-todo-box {
+    top: 1px;
+    z-index: 1000;
+    position: sticky;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 50vw;
+    @media (max-width: 1000px) {
+      width: 90%;
+    }
+    height: 80%;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    .add-todo {
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      .label {
+        color: rgb(255, 255, 255);
+        font-weight: 500;
+      }
+      .add-button {
+        background-color: #7a84ec;
+      }
+    }
+  }
 
   .list-container {
     .animate {
@@ -19,19 +53,26 @@
     }
     padding: 25px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column-reverse;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     width: 90%;
     gap: 20px;
     .comment {
       min-height: 50px !important;
-      border: 1px solid #1d1d1d;
       border-radius: 10px;
+      width: 98% !important;
     }
     .todo-element {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      animation: fadeIn 0.5s linear;
+      animation-fill-mode: both;
       padding: 10px;
       width: 50vw;
+      @media (max-width: 1000px) {
+        width: 95%;
+      }
       min-height: 300px;
       font-weight: 500;
       text-align: start;
@@ -42,6 +83,7 @@
       background-color: rgb(255, 255, 255);
       border-radius: 10px;
       gap: 15px;
+
       .comments-show-button {
         height: 40px !important;
         font-size: 12px !important;
@@ -52,19 +94,52 @@
         color: #1d1d1d;
       }
       .title {
-        color: #333333;
-        font-size: 24px;
+        color: #474747;
+        font-size: 20px;
+        margin: 0 20px;
+
+        text-align: center;
       }
 
       .details {
-        color: #505050;
-        font-size: 20px;
+        color: #111111;
+        font-size: 24px;
       }
 
       .date {
         color: #505050;
         font-size: 20px;
       }
+      .delete-button {
+        background-color: #ec7a7a;
+        span {
+          color: rgb(255, 255, 255);
+        }
+      }
+      .edit-button {
+        background-color: #7a84ec;
+        span {
+          color: rgb(255, 255, 255);
+        }
+      }
+      .add-button {
+        background-color: #ab7aec;
+        color: rgb(255, 255, 255);
+      }
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    top: 100px;
+  }
+  75% {
+    opacity: 0.5;
+    top: 0px;
+  }
+  100% {
+    opacity: 1;
   }
 }

@@ -3,6 +3,8 @@ import "./home.scss";
 import { Button, Input } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import todoService from "./todo-service";
+import { useNavigate } from "react-router-dom";
+import authService from "../login/auth-service";
 
 const Home = () => {
   const [todo, setTodo] = useState({ title: "", details: "" });
@@ -10,6 +12,13 @@ const Home = () => {
   const [showEdit, setShowEdit] = useState(false);
   const [editText, setEditText] = useState({ title: "", details: "" });
   const [current, setCurrent] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!authService.isAuthenticated()) {
+      navigate("/");
+    }
+  }, []);
 
   const handleAddTodo = () => {
     if (todo?.title && todo?.details) {
@@ -38,12 +47,13 @@ const Home = () => {
     setShowEdit(true);
     setTodo("");
   };
+
   const handleSubmitEdit = () => {};
 
   return (
     <div className="home-container">
       <div className="add-todo-box">
-        <span className="head">Todo App</span>
+        <span className="head">Add Todo</span>
         <div className="add-todo">
           <Input
             value={todo?.title}

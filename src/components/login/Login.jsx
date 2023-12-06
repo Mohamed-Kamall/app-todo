@@ -43,7 +43,7 @@ export default function Login() {
     if (AuthService.isAuthenticated()) {
       navigate("/timeline");
     }
-  }, [AuthService.isAuthenticated()]);
+  }, []);
 
   const handleSubmit = (values) => {
     if (!form.getFieldsError().some((err) => err.errors.length > 0)) {
@@ -59,6 +59,7 @@ export default function Login() {
               success("you're logged in successfully");
               let user = {
                 ...res?.data,
+                email: values.email,
               };
               localStorage.setItem("todo-user", JSON.stringify(user));
               navigate("/timeline");
@@ -107,7 +108,7 @@ export default function Login() {
             display: "flex",
             alignItems: "center",
             fontSize: "20px",
-
+            fontWeight: 500,
             gap: 10,
           }}
         >
@@ -126,6 +127,7 @@ export default function Login() {
             display: "flex",
             alignItems: "center",
             fontSize: "20px",
+            fontWeight: 500,
             gap: 10,
           }}
         >
